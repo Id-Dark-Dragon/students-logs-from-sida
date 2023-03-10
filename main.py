@@ -22,12 +22,15 @@ opt.add_argument("start-maximized")
 opt.add_argument("disable-infobars")
 opt.add_argument("--disable-extensions")
 opt.add_argument(f"user-data-dir={PATH_TO_BROWSER_PROFILE}")
+# This is a sample Python script.
 
 # Starting the Driver and opening website page
 bot = webdriver.Edge(executable_path=PATH_WEBDRIVER, options=opt)
 bot.implicitly_wait(5)
 bot.get(
     'https://sida.medu.ir/#/login')
+# Press Shift+F10 to execute it or replace it with your code.
+# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 
 # ____________________ SIGN IN ______________________
@@ -71,6 +74,9 @@ for i in range(1, 8):
     bot.find_element(By.XPATH,
                      value=f"/html/body/div[1]/div/div[2]/div/div/ui-view/div/div/div[3]/div[1]/div/ul/li[2]/button").click()    # کارنامه گروهی
     sleep(5)
+# Press the green button in the gutter to run the script.
+if __name__ == '__main__':
+    print_hi('PyCharm')
 
     main_div = bot.find_element(By.XPATH, '/html/body/div[1]/div/div/div/div[2]/div/div/div')
     res = main_div.find_elements(By.XPATH, 'div')
@@ -113,4 +119,6 @@ for i in range(1, 8):
 
 print("-"*20)
 
+
+# See PyCharm help at https://www.jetbrains.com/help/pycharm/
 
