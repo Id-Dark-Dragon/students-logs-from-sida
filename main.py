@@ -1,18 +1,20 @@
 from selenium import webdriver
 from time import sleep
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.alert import Alert
 import urllib.request
 import os
 from dotenv import load_dotenv
+from selenium.webdriver.edge.service import Service
 
 load_dotenv()
 PATH_WEBDRIVER = 'C:\DEVELOPMENT\msedgedriver.exe'
 # check the location in "edge://version"
 PATH_TO_BROWSER_PROFILE = r'C:\Users\FaMiLy\AppData\Local\Microsoft\Edge\User Data\Profile 2'
-
+WEBSITE_URL = 'https://sida.medu.ir/#/login'
 
 class Automation:
     def __init__(self):
@@ -26,25 +28,36 @@ class Automation:
         self.opt.add_argument(f"user-data-dir={PATH_TO_BROWSER_PROFILE}")
 
         # Starting the Driver
-        self.bot = webdriver.Edge(executable_path=PATH_WEBDRIVER, options=self.opt)
+        service = Service(PATH_WEBDRIVER)
+        self.bot = webdriver.Edge(service=service, options=self.opt)
+        self.alert = Alert(self.bot)
 
     def open_website(self):
-        self.bot.get('https://sida.medu.ir/#/login')
+        self.bot.implicitly_wait(5)
+        self.bot.get(WEBSITE_URL)
 
     def sign_in(self):
-        self.bot.find_element(By.ID, value='userName').send_keys(os.environ.get('SIDA_USERNAME'))
+        self.bot.implicitly_wait(5)
+        self.bot.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/fieldset/div[3]/div[1]/div/span/input").send_keys(os.environ.get('SIDA_USERNAME'))
+        self.bot.implicitly_wait(5)
+        self.bot.find_element(By.XPATH,
+                              value='/html/body/div[1]/div[2]/div/fieldset/div[3]/div[2]/div/span/input').send_keys(
+            os.environ.get('SIDA_PASSWORD'))
         sleep(3)
         self.bot.find_element(By.XPATH,
-                              value='/html/body/div[1]/div[2]/div/fieldset/div[3]/div[2]/div[2]/span/input').click()
-        self.bot.find_element(By.XPATH,
-                              value='/html/body/div[1]/div[2]/div/fieldset/div[3]/div[2]/div[2]/span/input').send_keys(
-            os.environ.get('SIDA_PASSWORD'))
-        bot.execute_script("alert('کد امنیتی را خودتان وارد کنید. دقت داشته باشید که دکمه ی ورود را به هیچ عناون کلیک نکنید. خود برنامه این کار را میکند.')")
-        sleep(5)
-        self.bot.find_element(By.XPATH, value='/html/body/div[1]/div[2]/div/fieldset/div[3]/div[4]/button').click()
-        sleep(5)
+                              value='/html/body/div[1]/div[2]/div/fieldset/div[3]/div[3]/div[1]/div/span/input').click()
+        self.bot.execute_script("alert('کد امنیتی را خودتان وارد کنید. دقت داشته باشید که دکمه ی ورود را به هیچ عناون کلیک نکنید. خود برنامه این کار را میکند.')")
+        sleep(7)
+        try:
+            self.alert.accept()
+        except NoAlertPresentException:
+            pass
+        finally:
+            WebDriverWait(self.bot, 20).until(EC.element_to_be_clickable((By.XPATH,
+                                                                        "/html/body/div[1]/div[2]/div/fieldset/div[3]/div[4]/button"))).click()
 
     def change_education_year(self):
+        self.bot.implicitly_wait(5)
         self.bot.find_element(By.XPATH,
                               value=f"/html/body/div[1]/div/div[1]/nav/div/div/ul/li[3]/span").click()
         sleep(3)
@@ -62,13 +75,18 @@ class Automation:
                               value="/html/body/div[1]/div/div[3]/div[3]/div/div[5]/div[1]/a").click()  # کارنامه
         sleep(1)
         self.bot.find_element(By.XPATH,
-                              value="/html/body/div[1]/div/div[3]/div[3]/div/div[5]/div[2]/div/ul/li[4]").click()  # کارنامه گروهی
-        sleep(2)
+                              value="/html/body/div[1]/div/div[3]/div[3]/div/div[5]/div[2]/div/ul/li[5]/a").click()  # کارنامه گروهی
+        self.bot.implicitly_wait(5)
         self.bot.find_element(By.XPATH,
                               value="/html/body/div[1]/div/div[2]/div/div/ui-view/div/div/div[2]/span[1]/input").click()  # کارنامه نیم سال
         sleep(2)
 
-        for i in range(1, 8):
+        self.bot.find_element(By.XPATH,
+                              value="/html/body/div[1]/div/div[2]/div/div/ui-view/div/div/div[1]/popup-class-room/div/div[2]/span").click()  # انتخاب کلاس
+        number_of_classes = len(self.bot.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[2]/div/div/div/div[2]/table/tbody").find_elements(By.XPATH, "tr"))
+        self.bot.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[1]/i").click()       #بستن کلاسها
+        print(number_of_classes)
+        for i in range(1, number_of_classes+1):
             self.bot.find_element(By.XPATH,
                                   value="/html/body/div[1]/div/div[2]/div/div/ui-view/div/div/div[1]/popup-class-room/div/div[2]/span").click()  # انتخاب کلاس
             sleep(3)
@@ -123,3 +141,7 @@ class Automation:
 
 bot = Automation()
 bot.open_website()
+bot.sign_in()
+bot.change_education_year()
+bot.getting_students_logs()
+
