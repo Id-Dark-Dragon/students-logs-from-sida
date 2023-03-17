@@ -43,6 +43,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="list.size" />
+          <option value="list.appened" />
         </list>
       </option>
     </inspection_tool>
