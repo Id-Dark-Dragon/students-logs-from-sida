@@ -85,7 +85,6 @@ class Automation:
                               value="/html/body/div[1]/div/div[2]/div/div/ui-view/div/div/div[1]/popup-class-room/div/div[2]/span").click()  # انتخاب کلاس
         number_of_classes = len(self.bot.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[2]/div/div/div/div[2]/table/tbody").find_elements(By.XPATH, "tr"))
         self.bot.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[1]/i").click()       #بستن کلاسها
-        print(number_of_classes)
         for i in range(1, number_of_classes+1):
             self.bot.find_element(By.XPATH,
                                   value="/html/body/div[1]/div/div[2]/div/div/ui-view/div/div/div[1]/popup-class-room/div/div[2]/span").click()  # انتخاب کلاس
@@ -116,6 +115,12 @@ class Automation:
                     student_img = self.bot.find_element(By.XPATH,
                                                         value=f"/html/body/div[1]/div/div/div/div[2]/div/div/div/div[{i}]/div[1]/div[4]/img").get_attribute(
                         "src")
+
+                    if not os.path.exists(f"{student_class}"):
+                        os.mkdir(f"{student_class}")
+                        os.mkdir(f"{student_class}/19-19.49")
+                        os.mkdir(f"{student_class}/19.5-19.99")
+                        os.mkdir(f"{student_class}/20")
 
                     if 19 <= student_score < 19.5:
                         student_round_score = 19
