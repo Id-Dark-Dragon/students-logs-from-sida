@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3c84f8f3-ed55-48b4-bfb5-49395e07e798" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3c84f8f3-ed55-48b4-bfb5-49395e07e798" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -188,6 +186,7 @@
       <workItem from="1679089244337" duration="4641000" />
       <workItem from="1679129966808" duration="371000" />
       <workItem from="1679130674986" duration="525000" />
+      <workItem from="1679131216456" duration="806000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="MAKE A CLASS">
       <created>1679040739243</created>
@@ -213,7 +212,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۰۴" />
       <updated>1679130326317</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL‎۰۰۰۰۵" summary="add req.txt file">
+      <created>1679131232155</created>
+      <option name="number" value="LOCAL‎۰۰۰۰۵" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۰۵" />
+      <updated>1679131232155</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
