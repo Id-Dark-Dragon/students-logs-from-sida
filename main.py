@@ -16,6 +16,7 @@ PATH_WEBDRIVER = 'C:\DEVELOPMENT\msedgedriver.exe'
 PATH_TO_BROWSER_PROFILE = r'C:\Users\FaMiLy\AppData\Local\Microsoft\Edge\User Data\Profile 2'
 WEBSITE_URL = 'https://sida.medu.ir/#/login'
 
+
 class Automation:
     def __init__(self):
         # Adding webdriver settings(arguments) before initializing it.
