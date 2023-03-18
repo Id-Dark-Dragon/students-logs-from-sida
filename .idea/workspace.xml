@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3c84f8f3-ed55-48b4-bfb5-49395e07e798" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +186,8 @@
       <workItem from="1679039111114" duration="1669000" />
       <workItem from="1679088675687" duration="435000" />
       <workItem from="1679089244337" duration="4641000" />
-      <workItem from="1679129966808" duration="339000" />
+      <workItem from="1679129966808" duration="371000" />
+      <workItem from="1679130674986" duration="525000" />
     </task>
     <task id="LOCAL‎۰۰۰۰۱" summary="MAKE A CLASS">
       <created>1679040739243</created>
@@ -207,7 +207,13 @@
       <option name="presentableId" value="LOCAL‎۰۰۰۰۳" />
       <updated>1679093919574</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL‎۰۰۰۰۴" summary="add req.txt file">
+      <created>1679130326317</created>
+      <option name="number" value="LOCAL‎۰۰۰۰۴" />
+      <option name="presentableId" value="LOCAL‎۰۰۰۰۴" />
+      <updated>1679130326317</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,7 +223,8 @@
     <MESSAGE value="MAKE A CLASS" />
     <MESSAGE value="class is complete" />
     <MESSAGE value="making directory automatic" />
-    <option name="LAST_COMMIT_MESSAGE" value="making directory automatic" />
+    <MESSAGE value="add req.txt file" />
+    <option name="LAST_COMMIT_MESSAGE" value="add req.txt file" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/pythonProject22$main.coverage" NAME="main Coverage Results" MODIFIED="1679093806323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
